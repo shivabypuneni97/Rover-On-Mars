@@ -24,8 +24,6 @@ public class MarsSericeImpl implements MarsService {
 			String valid = marsValidator.marsValidator(plateauCor, startPos, moveCom);
 			String finalLocation = null;
 			if(valid == null) {
-
-
 				String location;
 				char returnedLocation;
 				int platx;
@@ -41,12 +39,8 @@ public class MarsSericeImpl implements MarsService {
 				String startD = startPos.substring(4);
 				tempD = startD.charAt(0);
 				returnedLocation = tempD;
-
-
 				for (int i = 0; i < moveCom.length(); i++) {
 					char[] tempA = moveCom.toCharArray();
-					// if((startx <= platx) && (starty <= platy))
-
 					char t = tempA[i];
 					if (t == Commands.LEFT.asChar() || t == Commands.RIGHT.asChar()) {
 						returnedLocation = rotate(returnedLocation, t);
@@ -54,7 +48,7 @@ public class MarsSericeImpl implements MarsService {
 						List<Integer> returnedNumberList = moveDirection(returnedLocation, startx, starty);
 
 						if (returnedNumberList.get(0) > platx || returnedNumberList.get(1) > platy) {
-							return "Rover coordinates exceeds plateau range";
+							return "Error Message: Rover coordinates exceeds plateau range";
 						} else {
 							startx = returnedNumberList.get(0);
 							starty = returnedNumberList.get(1);
@@ -63,7 +57,6 @@ public class MarsSericeImpl implements MarsService {
 
 					}
 				}
-
 
 				String tempx = Integer.toString(startx);
 				String tempy = Integer.toString(starty);

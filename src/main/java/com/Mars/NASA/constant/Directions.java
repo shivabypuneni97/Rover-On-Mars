@@ -10,9 +10,17 @@ public enum Directions {
 
     SOUTH('S');
 
+
     public char asChar() {
         return value;
     }
+
+    public String asString(){
+        return Character.toString(value);
+    }
+
+
+
     private char value;
 
     Directions(char value){
